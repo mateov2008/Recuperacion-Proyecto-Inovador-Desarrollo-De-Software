@@ -1,57 +1,886 @@
 
+/* =========================================
+   PUPUSERÍA EL COMAL
+   Diseño elegante, moderno y extravagante
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap');
+
+:root {
+    --cafe: #24150f;
+    --cafe-claro: #382218;
+    --terracota: #a7472b;
+    --terracota-claro: #cb7049;
+    --dorado: #d8ad65;
+    --crema: #fff8ed;
+    --blanco: #ffffff;
+    --texto: #38271e;
+    --texto-suave: #826d5d;
+    --borde: #ead9c5;
+    --verde: #36734b;
+    --sombra: 0 14px 40px rgba(55, 30, 17, 0.10);
+    --sombra-fuerte: 0 20px 50px rgba(36, 21, 15, 0.20);
+    --radio: 18px;
+}
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 25px;
 }
 
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f1f5f9;
-    color: #1e293b;
+    font-family: 'DM Sans', Arial, sans-serif;
+    background:
+        radial-gradient(ellipse at top left, rgba(216, 173, 101, 0.12), transparent 35%),
+        var(--crema);
+    color: var(--texto);
+    line-height: 1.7;
+    min-height: 100vh;
 }
 
-header {
-    background-color: #1d4ed8;
-    color: white;
-    text-align: center;
-    padding: 30px 15px;
+img {
+    max-width: 100%;
 }
 
-main {
-    padding: 40px 20px;
-}
-
-.contenido {
-    max-width: 600px;
-    margin: auto;
-    padding: 30px;
-    background-color: white;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0 4px 12px #00000015;
+button,
+input,
+select,
+textarea {
+    font: inherit;
 }
 
 button {
-    padding: 12px 20px;
-    background-color: #2563eb;
-    color: white;
-    border: none;
-    border-radius: 6px;
     cursor: pointer;
 }
 
-button:hover {
-    background-color: #1e40af;
+::selection {
+    background: var(--dorado);
+    color: var(--cafe);
 }
 
-#mensaje {
-    font-weight: bold;
-    color: #15803d;
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+header {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 55px 20px 60px;
+    text-align: center;
+    color: var(--crema);
+    background:
+        radial-gradient(ellipse at 15% 20%, rgba(203, 112, 73, 0.22), transparent 40%),
+        radial-gradient(ellipse at 85% 80%, rgba(216, 173, 101, 0.15), transparent 40%),
+        linear-gradient(135deg, #1c100b, #382218 55%, #21130d);
+    border-bottom: 3px solid var(--dorado);
 }
+
+header::before,
+header::after {
+    position: absolute;
+    z-index: -1;
+    color: rgba(216, 173, 101, 0.15);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(100px, 20vw, 230px);
+    line-height: 1;
+    pointer-events: none;
+}
+
+header::before {
+    content: '✦';
+    top: -25px;
+    left: 4%;
+    transform: rotate(-15deg);
+}
+
+header::after {
+    content: '✧';
+    right: 5%;
+    bottom: -65px;
+    transform: rotate(15deg);
+}
+
+header h1 {
+    max-width: 900px;
+    margin: 0 auto 12px;
+    color: #f6d79f;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1.5px;
+    text-shadow: 0 5px 25px rgba(0, 0, 0, 0.25);
+}
+
+header p {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #f5e4ce;
+    font-size: clamp(0.95rem, 2vw, 1.15rem);
+    letter-spacing: 0.5px;
+}
+
+/* =========================================
+   CONTENIDO PRINCIPAL
+========================================= */
+
+main {
+    width: min(1250px, 92%);
+    margin: 45px auto;
+}
+
+section {
+    margin-bottom: 48px;
+    scroll-margin-top: 25px;
+}
+
+section h2 {
+    position: relative;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    color: var(--cafe);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(1.65rem, 3vw, 2.3rem);
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 75px;
+    height: 3px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, var(--terracota), var(--dorado));
+}
+
+/* =========================================
+   BUSCADOR
+========================================= */
+
+#buscarProducto {
+    display: block;
+    width: 100%;
+    margin-bottom: 28px;
+    padding: 16px 20px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    outline: none;
+    background: rgba(255, 255, 255, 0.88);
+    color: var(--texto);
+    box-shadow: 0 5px 18px rgba(55, 30, 17, 0.04);
+    transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+#buscarProducto::placeholder {
+    color: #a08c7b;
+}
+
+#buscarProducto:focus {
+    border-color: var(--terracota);
+    background: var(--blanco);
+    box-shadow: 0 0 0 4px rgba(167, 71, 43, 0.10);
+}
+
+/* =========================================
+   TARJETAS DEL MENÚ
+========================================= */
+
+#menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
+    align-items: stretch;
+    gap: 25px;
+}
+
+.producto {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid rgba(216, 173, 101, 0.32);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.producto:hover {
+    transform: translateY(-8px);
+    border-color: var(--dorado);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.producto-imagen {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 215px;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #ead4b8, #f9eddd);
+}
+
+.producto-imagen::after {
+    content: '';
+    position: absolute;
+    inset: 55% 0 0;
+    pointer-events: none;
+    background: linear-gradient(transparent, rgba(36, 21, 15, 0.15));
+}
+
+.producto-imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.55s ease;
+}
+
+.producto:hover .producto-imagen img {
+    transform: scale(1.09);
+}
+
+.producto-imagen.imagen-fallida {
+    font-size: 65px;
+    color: var(--terracota);
+}
+
+.producto-contenido {
+    display: flex;
+    min-height: 210px;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.producto-contenido h3 {
+    margin-bottom: 8px;
+    color: var(--cafe);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.producto-contenido p {
+    flex: 1;
+    margin-bottom: 20px;
+    color: var(--texto-suave);
+    font-size: 0.93rem;
+    line-height: 1.65;
+}
+
+.producto-pie {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+}
+
+.precio {
+    color: var(--terracota);
+    font-size: 1.25rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* =========================================
+   BOTONES GENERALES
+========================================= */
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 11px 16px;
+    font-weight: 700;
+    transition:
+        transform 0.2s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.boton-agregar {
+    border: 1px solid var(--terracota);
+    background: linear-gradient(135deg, var(--terracota), #85351f);
+    color: var(--blanco);
+    box-shadow: 0 5px 13px rgba(167, 71, 43, 0.17);
+}
+
+.boton-agregar:hover {
+    background: linear-gradient(135deg, var(--terracota-claro), var(--terracota));
+    box-shadow: 0 8px 20px rgba(167, 71, 43, 0.24);
+    transform: translateY(-2px);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid var(--dorado);
+    outline-offset: 3px;
+}
+
+/* =========================================
+   CARRITO
+========================================= */
+
+#carrito {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.item-carrito {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: var(--blanco);
+    box-shadow: 0 5px 18px rgba(55, 30, 17, 0.05);
+    transition: border-color 0.25s, transform 0.25s;
+}
+
+.item-carrito:hover {
+    transform: translateX(3px);
+    border-color: var(--dorado);
+}
+
+.item-carrito-info {
+    flex: 1;
+    min-width: 140px;
+}
+
+.item-carrito-info h4 {
+    color: var(--cafe);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.08rem;
+}
+
+.item-carrito-info p {
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+.controles-cantidad {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.controles-cantidad span {
+    min-width: 20px;
+    text-align: center;
+    font-weight: 800;
+}
+
+.controles-cantidad button {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+    place-items: center;
+    border: 1px solid var(--borde);
+    border-radius: 50%;
+    background: #fff4e4;
+    color: var(--terracota);
+    font-size: 1.2rem;
+}
+
+.controles-cantidad button:hover {
+    border-color: var(--terracota);
+    background: var(--terracota);
+    color: white;
+}
+
+.item-carrito > strong {
+    color: var(--verde);
+    font-size: 1.08rem;
+    white-space: nowrap;
+}
+
+/* RESUMEN DEL CARRITO */
+
+.resumen-carrito {
+    margin-top: 22px;
+    padding: 25px;
+    border: 1px solid rgba(216, 173, 101, 0.5);
+    border-radius: var(--radio);
+    background: linear-gradient(135deg, #fffdf9, #f8ead8);
+    box-shadow: var(--sombra);
+}
+
+.resumen-carrito p {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+#subtotal,
+#total {
+    font-weight: 800;
+}
+
+#total {
+    color: var(--verde);
+    font-size: 1.45rem;
+}
+
+/* =========================================
+   FORMULARIO DE PEDIDO
+========================================= */
+
+#formularioPedido {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    padding: clamp(20px, 4vw, 35px);
+    border: 1px solid rgba(216, 173, 101, 0.4);
+    border-radius: 22px;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+}
+
+#formularioPedido label {
+    margin-top: 5px;
+    color: var(--cafe);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+#formularioPedido input,
+#formularioPedido select,
+#formularioPedido textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid var(--borde);
+    border-radius: 11px;
+    outline: none;
+    background: #fffdf9;
+    color: var(--texto);
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+#formularioPedido input:focus,
+#formularioPedido select:focus,
+#formularioPedido textarea:focus {
+    border-color: var(--terracota);
+    box-shadow: 0 0 0 4px rgba(167, 71, 43, 0.09);
+}
+
+#formularioPedido textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+#formularioPedido button[type="submit"] {
+    margin-top: 12px;
+    padding: 15px 20px;
+    border: 1px solid var(--terracota);
+    background: linear-gradient(135deg, var(--terracota), #79301e);
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 0.2px;
+    box-shadow: 0 8px 20px rgba(167, 71, 43, 0.19);
+}
+
+#formularioPedido button[type="submit"]:hover {
+    background: linear-gradient(135deg, var(--terracota-claro), var(--terracota));
+    box-shadow: 0 12px 25px rgba(167, 71, 43, 0.25);
+    transform: translateY(-2px);
+}
+
+/* =========================================
+   HISTORIAL DE PEDIDOS
+========================================= */
+
+#listaPedidos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    align-items: start;
+    gap: 22px;
+}
+
+.pedido {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    padding: 22px;
+    border: 1px solid var(--borde);
+    border-top: 4px solid var(--dorado);
+    border-radius: 16px;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.pedido:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sombra-fuerte);
+}
+
+.pedido-cabecera {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+.pedido-cabecera h3 {
+    color: var(--cafe);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+}
+
+.pedido-cabecera p {
+    color: var(--texto-suave);
+    font-size: 0.8rem;
+}
+
+.estado-pedido {
+    display: inline-block;
+    padding: 6px 11px;
+    border: 1px solid #efd7a6;
+    border-radius: 30px;
+    background: #fff3d8;
+    color: #81520c;
+    font-size: 0.76rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.pedido ul {
+    margin: 14px 0;
+    padding-left: 22px;
+}
+
+.pedido li {
+    padding: 3px 0;
+    color: var(--texto-suave);
+    font-size: 0.91rem;
+}
+
+.pedido > p {
+    margin-bottom: 5px;
+    font-size: 0.94rem;
+}
+
+.pedido-total {
+    margin-top: 15px;
+    padding-top: 13px;
+    border-top: 1px solid var(--borde);
+    color: var(--verde);
+    font-size: 1.2rem !important;
+    font-weight: 800;
+}
+
+.acciones-pedido {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.acciones-pedido button {
+    flex: 1;
+    border: 1px solid var(--borde);
+    background: #fff3e2;
+    color: var(--terracota);
+    font-size: 0.84rem;
+}
+
+.acciones-pedido button:hover {
+    border-color: var(--terracota);
+    background: var(--terracota);
+    color: white;
+}
+
+/* =========================================
+   MENSAJES VACÍOS
+========================================= */
+
+#sinResultados,
+#carritoVacio,
+#pedidosVacios {
+    margin-bottom: 18px;
+    padding: 24px 18px;
+    border: 1px dashed #d8b995;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--texto-suave);
+    text-align: center;
+}
+
+.oculto {
+    display: none !important;
+}
+
+/* =========================================
+   PIE DE PÁGINA
+========================================= */
 
 footer {
-    margin-top: 30px;
-    padding: 15px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 65px;
+    padding: 35px 20px;
+    border-top: 3px solid var(--dorado);
+    background:
+        radial-gradient(ellipse at top right, rgba(203, 112, 73, 0.16), transparent 45%),
+        linear-gradient(135deg, #1c100b, #382218);
+    color: #f5e4ce;
     text-align: center;
-    color: #64748b;
+}
+
+footer p {
+    font-size: 0.92rem;
+    letter-spacing: 0.3px;
+}
+
+/* =========================================
+   ANIMACIONES
+========================================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+section {
+    animation: aparecer 0.55s ease both;
+}
+
+/* Reducir movimiento si el usuario lo prefiere */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =========================================
+   TABLETAS
+========================================= */
+
+@media (max-width: 850px) {
+    main {
+        width: 94%;
+        margin: 32px auto;
+    }
+
+    #menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 17px;
+    }
+
+    .producto-imagen {
+        height: 180px;
+    }
+
+    .producto-contenido {
+        padding: 16px;
+    }
+
+    .producto-contenido h3 {
+        font-size: 1.12rem;
+    }
+
+    #listaPedidos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 560px) {
+    header {
+        padding: 40px 16px 45px;
+    }
+
+    header h1 {
+        letter-spacing: -0.7px;
+    }
+
+    main {
+        width: 92%;
+        margin: 27px auto;
+    }
+
+    section {
+        margin-bottom: 38px;
+    }
+
+    section h2 {
+        margin-bottom: 19px;
+    }
+
+    #menu {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .producto {
+        border-radius: 13px;
+    }
+
+    .producto-imagen {
+        height: 135px;
+    }
+
+    .producto-contenido {
+        min-height: 0;
+        padding: 12px;
+    }
+
+    .producto-contenido h3 {
+        font-size: 1rem;
+    }
+
+    .producto-contenido p {
+        margin-bottom: 13px;
+        font-size: 0.82rem;
+        line-height: 1.5;
+    }
+
+    .producto-pie {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .precio {
+        font-size: 1.1rem;
+    }
+
+    .boton-agregar {
+        width: 100%;
+        padding: 10px 8px;
+        font-size: 0.84rem;
+    }
+
+    .item-carrito {
+        padding: 15px;
+    }
+
+    .resumen-carrito {
+        padding: 19px;
+    }
+
+    #formularioPedido {
+        padding: 19px;
+        border-radius: 16px;
+    }
+
+    #listaPedidos {
+        grid-template-columns: 1fr;
+    }
+
+    .pedido {
+        padding: 18px;
+    }
+
+    footer {
+        margin-top: 45px;
+        padding: 28px 15px;
+    }
+}
+
+/* =========================================
+   CELULARES PEQUEÑOS
+========================================= */
+
+@media (max-width: 360px) {
+    #menu {
+        grid-template-columns: 1fr;
+    }
+
+    .producto-imagen {
+        height: 190px;
+    }
+
+    .producto-contenido {
+        padding: 16px;
+    }
+
+    .producto-pie {
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .boton-agregar {
+        width: auto;
+    }
+
+    .item-carrito {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .controles-cantidad {
+        align-self: flex-start;
+    }
+}
+
+
+/* BOTÓN MI PEDIDO */
+a[href="#carrito"],
+nav a,
+.boton-pedido,
+#btnMiPedido {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #a7472b, #79301e);
+    color: #ffffff;
+    border: 1px solid #d8ad65;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 5px 15px rgba(36, 21, 15, 0.18);
+    transition: all 0.3s ease;
+}
+
+a[href="#carrito"]:hover,
+nav a:hover,
+.boton-pedido:hover,
+#btnMiPedido:hover {
+    background: linear-gradient(135deg, #d8ad65, #b9853e);
+    color: #24150f;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(36, 21, 15, 0.25);
 }

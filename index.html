@@ -4,28 +4,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi sitio web</title>
+    <meta name="description" content="Sistema de pedidos de Pupusería El Comal">
+    <title>Pupusería El Comal | Pedidos</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <h1>Mi primer sitio web</h1>
-        <p>Proyecto desarrollado desde cero</p>
+    <header class="encabezado">
+        <div class="marca">
+            <span class="logo">🍽️</span>
+            <div>
+                <h1>Pupusería El Comal</h1>
+                <p>El auténtico sabor salvadoreño</p>
+            </div>
+        </div>
+        <a href="#carrito" class="enlace-carrito">
+            🛒 Mi pedido <span id="contador">0</span>
+        </a>
     </header>
 
-    <main>
-        <section class="contenido">
-            <h2>¡Bienvenido!</h2>
-            <p>Este es el inicio de mi proyecto web.</p>
-            <button id="botonSaludo">Haz clic aquí</button>
-            <p id="mensaje"></p>
+    <main class="contenedor">
+        <section class="bienvenida">
+            <p class="etiqueta">HECHAS CON AMOR</p>
+            <h2>¡Tus pupusas favoritas!</h2>
+            <p>Elige tus pupusas, personaliza tu pedido y disfruta.</p>
+        </section>
+
+        <section class="seccion-menu">
+            <div class="titulo-seccion">
+                <div>
+                    <h2>Nuestro menú</h2>
+                    <p>Selecciona tus favoritas.</p>
+                </div>
+                <input
+                    type="search"
+                    id="buscador"
+                    placeholder="Buscar pupusas..."
+                    aria-label="Buscar pupusas"
+                >
+            </div>
+            <div id="menu" class="productos"></div>
+            <p id="sinResultados" class="oculto">
+                No encontramos pupusas con ese nombre.
+            </p>
+        </section>
+
+        <section id="carrito" class="panel-pedido">
+            <h2>🛒 Tu pedido</h2>
+            <p class="subtitulo">Revisa las cantidades antes de continuar.</p>
+
+            <div id="carritoItems"></div>
+
+            <div class="total">
+                <span>Total a pagar</span>
+                <strong id="total">$0.00</strong>
+            </div>
+
+            <form id="formPedido">
+                <h3>Datos del cliente</h3>
+
+                <label for="cliente">Nombre del cliente</label>
+                <input
+                    type="text"
+                    id="cliente"
+                    placeholder="Escribe tu nombre"
+                    maxlength="70"
+                    required
+                >
+
+                <label for="tipoPedido">Tipo de pedido</label>
+                <select id="tipoPedido" required>
+                    <option value="Para llevar">Para llevar</option>
+                    <option value="Para comer en el local">Comer en el local</option>
+                </select>
+
+                <label for="notas">Indicaciones (opcional)</label>
+                <textarea
+                    id="notas"
+                    rows="2"
+                    maxlength="250"
+                    placeholder="Ej.: bastante curtido, sin salsa..."
+                ></textarea>
+
+                <button type="submit" id="btnRegistrar" class="boton-principal">
+                    Confirmar pedido
+                </button>
+                <p class="aviso">
+                    Este sistema registra pedidos localmente.
+                    No procesa pagos en línea.
+                </p>
+            </form>
+            <p id="mensaje" role="status" aria-live="polite"></p>
+        </section>
+
+        <section class="seccion-historial">
+            <div class="titulo-seccion">
+                <div>
+                    <h2>📋 Pedidos registrados</h2>
+                    <p>Consulta y actualiza el estado de cada pedido.</p>
+                </div>
+            </div>
+            <div id="historial"></div>
         </section>
     </main>
 
     <footer>
-        <p>Proyecto de recuperación</p>
+        <p>© 2026 Pupusería El Comal · Sistema de pedidos</p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
